@@ -28,9 +28,9 @@ export default defineComponent({
   watch: {
     todos(new_value: Todo[]) {
       const isFinished = !new_value.some(({ done }) => !done)
-      this.before = new_value - 1
-      this.after = new_value + 1
-      this.old = old_value
+      if (isFinished) {
+        alert('Finalizados!')
+      }
     }
   },
   created() {
