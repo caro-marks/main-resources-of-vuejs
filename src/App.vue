@@ -1,8 +1,6 @@
 <template>
   <!-- pode ser 'v-bind:' ou simplesmente ':' -->
-  <a v-bind:href="product.url" :class="productClass">
-    {{ product.name }}
-  </a>
+  <p>{{ profission }}</p>
 </template>
 
 <script lang="ts">
@@ -11,17 +9,11 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   data() {
     return {
-      product: {
-        name: 'Camisas',
-        url: 'https://www.google.com/search?q=camisa',
-        stock: true,
-      },
+      profission: '',
     }
   },
-  computed: {
-    productClass(): string {
-      return this.product.stock ? 'success' : 'danger'
-    },
+  created() {
+    this.profission = 'Full Stack Developer'
   },
 })
 </script>
