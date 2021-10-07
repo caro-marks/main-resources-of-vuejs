@@ -8,7 +8,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({})
 </script>
 
-<style>
+<style scoped>
 .button-styled {
   color: #fff;
   border-radius: 0.3rem;
