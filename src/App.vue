@@ -1,5 +1,6 @@
 <template>
   <form>
+    <h1 v-railai:background.shadow="'purple'">FORMULARIO CARAIO</h1>
     <input type="text" placeholder="Nome" v-model.lazy.trim="name" />
 
     <input type="number" placeholder="Idade" v-model.number="age" />
