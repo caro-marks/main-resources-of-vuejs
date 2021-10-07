@@ -1,53 +1,63 @@
 <template>
-  <p v-for="doneTodo in doneTodos" :key="doneTodo.text">
-    {{ doneTodo.text }}
-  </p>
-
-  <button @click="checkAllTodos">Finalizar</button>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <h1>{{ count }}</h1>
+  <button @click="count++">increment</button>
+  <HelloWorld msg="{{this.message}}" />
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-
-interface Todo {
-  text: string
-  done: boolean
-}
+import HelloWorld from './components/HelloWorld.vue'
 
 export default defineComponent({
+  name: 'App',
+  components: {
+    HelloWorld
+  },
   data() {
     return {
-      todos: [] as Todo[]
+      message: '',
+      count: 0
     }
   },
-  computed: {
-    doneTodos(): Todo[] {
-      return this.todos.filter((todo) => todo.done)
-    }
-  },
-  watch: {
-    todos(new_value: Todo[]) {
-      const isFinished = !new_value.some(({ done }) => !done)
-      if (isFinished) {
-        alert('Finalizados!')
-      }
-    }
+  beforeCreate() {
+    alert(this.message)
   },
   created() {
-    this.todos = [
-      { text: 'Estudar Typescript', done: true },
-      { text: 'Lavar os pratos', done: false },
-      { text: 'Aprender Nuxt.js', done: true }
-    ]
+    // melhor momento para acessar dados
+    this.message = 'Welcome to Your Vue.js + TypeScript App'
+    alert(this.message)
   },
-  methods: {
-    checkAllTodos() {
-      this.todos = this.todos.map(({ text }) => {
-        return { text, done: true }
-      })
-    }
+  beforeMount() {
+    alert('montando')
+  },
+  mounted() {
+    // melhor momento para manipular a DOM
+    alert('montado this.$el')
+  },
+  beforeUpdate() {
+    alert('before: ' + this.count)
+  },
+  updated() {
+    // ações após alterações
+    alert('after: ' + this.count)
+  },
+  beforeUnmount() {
+    alert('desmontando')
+  },
+  unmounted() {
+    alert('desmontado')
   }
 })
 </script>
 
-<style></style>
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
