@@ -1,5 +1,7 @@
 <template>
-  <button>Botao Estilizado</button>
+  <button class=".button_styled">
+    <span> Botao Estilizado </span>
+  </button>
 </template>
 
 <script lang="ts">
