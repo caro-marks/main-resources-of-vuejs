@@ -1,9 +1,8 @@
 <template>
-  <!-- pode ser 'v-on:' ou '@' -->
   <div>
-    <!-- checar documentação do vue sobre event handlers -->
-    <a href="#interno" v-on:click.once.prevent="something"> link interno </a>
-    <input type="text" @keyup="something" />
+    <h1 v-if="sex === 'yes'">YES</h1>
+    <h1 v-else-if="sex === 'no'">NO</h1>
+    <h1 v-else>BIZARRE</h1>
   </div>
 </template>
 
@@ -11,10 +10,10 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  methods: {
-    something() {
-      console.log('ANYTHING YOU WANT')
-    },
+  data() {
+    return {
+      sex: 'Masculino',
+    }
   },
 })
 </script>
