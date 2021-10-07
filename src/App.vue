@@ -1,19 +1,20 @@
 <template>
-  <!-- pode ser 'v-bind:' ou simplesmente ':' -->
-  <p>Nowhere: <span v-html="link" /></p>
+  <!-- pode ser 'v-on:' ou '@' -->
+  <div>
+    <!-- checar documentação do vue sobre event handlers -->
+    <a href="#interno" v-on:click.once.prevent="something"> link interno </a>
+    <input type="text" @keyup="something" />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  data() {
-    return {
-      link: '',
-    }
-  },
-  created() {
-    this.link = '<a href="#">Algum lugar</a>'
+  methods: {
+    something() {
+      console.log('ANYTHING YOU WANT')
+    },
   },
 })
 </script>
