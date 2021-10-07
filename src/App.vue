@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 !v-show="sex === 'strange'">BIZARRE</h1>
+    <h1 v-for="number in numbers" :key="number.id">{{ number }}</h1>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   data() {
     return {
-      sex: 'mas',
+      numbers: [1, 2, 3, 4, 5, 6],
     }
   },
 })
