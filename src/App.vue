@@ -1,18 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <!-- pode ser 'v-bind:' ou simplesmente ':' -->
+  <a v-bind:href="product.url" :class="productClass">
+    {{ product.name }}
+  </a>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import { defineComponent } from 'vue'
 
 export default defineComponent({
-  name: "App",
-  components: {
-    HelloWorld,
+  data() {
+    return {
+      product: {
+        name: 'Camisas',
+        url: 'https://www.google.com/search?q=camisa',
+        stock: true,
+      },
+    }
   },
-});
+  computed: {
+    productClass(): string {
+      return this.product.stock ? 'success' : 'danger'
+    },
+  },
+})
 </script>
 
 <style>
@@ -23,5 +34,13 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.danger {
+  color: red;
+}
+
+.success {
+  color: green;
 }
 </style>
