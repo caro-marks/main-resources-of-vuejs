@@ -1,6 +1,6 @@
 <template>
   <!-- pode ser 'v-bind:' ou simplesmente ':' -->
-  <p>{{ profission }}</p>
+  <p>Nowhere: <span v-html="link" /></p>
 </template>
 
 <script lang="ts">
@@ -9,11 +9,11 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   data() {
     return {
-      profission: '',
+      link: '',
     }
   },
   created() {
-    this.profission = 'Full Stack Developer'
+    this.link = '<a href="#">Algum lugar</a>'
   },
 })
 </script>
