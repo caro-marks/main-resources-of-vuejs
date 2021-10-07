@@ -1,5 +1,5 @@
 <template>
-  <h1 class="static" :class="{ active: isActive, 'text-danger': hasError }">
+  <h1 :class="[className, { 'text-danger': hasError, active: isActive }]">
     FALASERIOVEI
   </h1>
 </template>
@@ -12,6 +12,7 @@ export default defineComponent({
     return {
       isActive: true,
       hasError: false,
+      className: 'textando',
     }
   },
 })
