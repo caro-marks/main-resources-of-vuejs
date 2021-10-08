@@ -1,5 +1,6 @@
 <template>
-  <ButtonStyled text="Cadastro" :user="user" color="success" />
+  <ButtonStyled text="Cadastro" :color="success" />
+  <ButtonStyled text="Login" />
 </template>
 
 <script lang="ts">
@@ -20,9 +21,3 @@ export default defineComponent({
   },
 })
 </script>
-<style scoped>
-.button_styled {
-  position: absolute;
-  top: 45%;
-}
-</style>

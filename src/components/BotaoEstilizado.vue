@@ -1,19 +1,13 @@
 <template>
   <button :class="['button_styled', color]">
     {{ text }}
-    {{ user.name }}
   </button>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
 
-type color = 'success' | 'danger' | 'primary'
-
-interface User {
-  id: number
-  name: string
-}
+type color = 'danger' | 'primary' | 'success'
 
 export default defineComponent({
   props: {
@@ -25,12 +19,8 @@ export default defineComponent({
       type: String,
       default: 'primary',
       validator: (value: color) => {
-        return ['sucess', 'danger', 'primary'].includes(value)
+        return ['success', 'primary', 'danger'].includes(value)
       },
-    },
-    user: {
-      type: Object as PropType<User>,
-      required: false,
     },
   },
 })
@@ -46,7 +36,6 @@ export default defineComponent({
   cursor: pointer;
   display: block;
   margin-bottom: 1rem;
-  background-color: #2d6cea;
 }
 
 .success {
