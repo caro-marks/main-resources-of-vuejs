@@ -1,5 +1,8 @@
 <template>
-  <button :class="['button-styled', color]">
+  <button
+    :class="['button-styled', color]"
+    @click="$emit('clique', 'aqui vei')"
+  >
     <slot name="before" />
     {{ text }}
     <slot name="after" />

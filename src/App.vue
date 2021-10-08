@@ -1,5 +1,5 @@
 <template>
-  <ButtonStyled text="Cadastro" color="success">
+  <ButtonStyled text="Cadastro" color="success" @clique="action($event)">
     <template v-slot:before>
       <i class="fas fa-hand-spock"></i>
     </template>
@@ -24,6 +24,11 @@ export default defineComponent({
         name: 'Marcos',
       },
     }
+  },
+  methods: {
+    action(acao: string) {
+      alert(acao)
+    },
   },
 })
 </script>
