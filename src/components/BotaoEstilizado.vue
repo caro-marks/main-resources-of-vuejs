@@ -1,6 +1,8 @@
 <template>
-  <button :class="['button_styled', color]">
+  <button :class="['button-styled', color]">
+    <slot name="before" />
     {{ text }}
+    <slot name="after" />
   </button>
 </template>
 

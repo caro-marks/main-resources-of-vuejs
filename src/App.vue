@@ -1,6 +1,12 @@
 <template>
-  <ButtonStyled text="Cadastro" :color="success" />
-  <ButtonStyled text="Login" />
+  <ButtonStyled text="Cadastro" color="success">
+    <template v-slot:before>
+      <i class="fas fa-hand-spock"></i>
+    </template>
+    <template v-slot:after>
+      <i class="far fa-hand-spock"></i>
+    </template>
+  </ButtonStyled>
 </template>
 
 <script lang="ts">
