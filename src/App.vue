@@ -20,7 +20,7 @@
     <transition
       enter-active-class="animate__animated animate__slideInLeft"
       leave-active-class="animate__animated animate__slideOutRight"
-      @after-enter="beforeEnter"
+      appear
     >
       <component :is="currentView" v-if="show" />
     </transition>
@@ -57,7 +57,7 @@ export default defineComponent({
   data() {
     return {
       currentView: 'Home',
-      show: false,
+      show: true,
     }
   },
   methods: {
