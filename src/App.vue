@@ -17,9 +17,25 @@
 
     <button @click="show = !show">Toogle</button>
 
-    <transition name="fade">
+    <transition
+      enter-active-class="animate__animated animate__slideInLeft"
+      leave-active-class="animate__animated animate__slideOutRight"
+      @after-enter="beforeEnter"
+    >
       <component :is="currentView" v-if="show" />
     </transition>
+    <!-- <transition
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @after-enter="afterEnter"
+      @enter-cancelled="enterCancelled"
+      @before-leave="beforeLeave"
+      @leave="leave"
+      @after-leave="afterLeave"
+      @leave-cancelled="leaveCancelled"
+      :css="false"
+    >
+    </transition> -->
   </div>
 </template>
 
@@ -29,6 +45,8 @@ import { defineComponent } from 'vue'
 import Home from '@/pages/Home.vue'
 import About from '@/pages/About.vue'
 import Contact from '@/pages/Contact.vue'
+
+import 'animate.css'
 
 export default defineComponent({
   components: {
@@ -46,11 +64,51 @@ export default defineComponent({
     action(acao: string) {
       alert(acao)
     },
+    // --------
+    // ENTERING
+    // --------
+    beforeEnter(el: HTMLElement) {
+      // ...
+      el.classList.add('test')
+    },
+    /* 
+    enter(el, done) {
+      // ...
+      done()
+    },
+    enterCancelled(el) {
+      // ...
+    }, 
+    afterEnter(el: HTMLElement) {
+      // ...
+      el.classList.add('test')
+    },*/
+
+    // --------
+    // LEAVING
+    // --------
+    /*  beforeLeave(el) {
+      // ...
+    },
+    leave(el, done) {
+      // ...
+      done()
+    },
+    afterLeave(el) {
+      // ...
+    },
+    // disponível apenas com v-show
+    leaveCancelled(el) {
+      // ...
+    }, */
   },
 })
 </script>
 
 <style scoped>
+.test {
+  background: cadetblue;
+}
 /* 
 v-enter-from (de onde estar vindo)
 v-enter-active (como vai acontecer)
@@ -62,12 +120,12 @@ v-leave-to (para onde está indo)
 
 O nome inicial `v` depende do atributo `name`
 */
-.fade-enter-from,
+/* .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
 }
-.fade-enter-active,
-.fade-leave-active {
+.daonde,
+.praonde {
   transition: opacity 0.5s;
-}
+} */
 </style>
