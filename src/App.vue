@@ -1,37 +1,43 @@
 <template>
-  <ul>
-    <li @mouseover="view = 'Lar'">home</li>
-    <li @click="view = 'Sobre'">about</li>
-    <li @click="view = 'Contato'">contato</li>
-  </ul>
+  <button @click="filterAZ">Filtro AZ</button>
 
-  <transition
-    enter-active-class="animate__animated animate__bounceIn"
-    leave-active-class="animate__animated animate__bounceOut"
+  <button @click="filterZA">Filtro ZA</button>
+
+  <transition-group
+    enter-active-class="animate__animated animate__fadeIn"
+    leave-active-class="animate__animated animate__fadeOut"
     :appear="true"
     mode="out-in"
   >
-    <component :is="view" />
-  </transition>
+    <li v-for="user in users" :key="user">
+      {{ user }}
+    </li>
+  </transition-group>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 import 'animate.css'
-import HOME from '@/pages/Home.vue'
-import CONTACT from '@/pages/Contact.vue'
-import ABOUT from '@/pages/About.vue'
 
 export default defineComponent({
-  components: {
-    Lar: HOME,
-    Contato: CONTACT,
-    Sobre: ABOUT,
-  },
   data() {
     return {
-      view: 'Lar',
+      users: ['Marcos', 'Alexandre', 'Brito', 'Nolasco'],
     }
+  },
+  methods: {
+    filterAZ() {
+      this.users.sort()
+    },
+    filterZA() {
+      this.users.sort().reverse()
+    },
   },
 })
 </script>
+
+<style scoped>
+.v-move {
+  transition: transform 0.5s;
+}
+</style>
