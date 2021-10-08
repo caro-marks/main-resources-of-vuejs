@@ -1,5 +1,5 @@
 <template>
-  <ButtonStyled />
+  <ButtonStyled text="Cadastro" :user="user" color="success" />
 </template>
 
 <script lang="ts">
@@ -12,9 +12,10 @@ export default defineComponent({
   },
   data() {
     return {
-      isActive: true,
-      hasError: false,
-      className: 'textando',
+      user: {
+        id: 2,
+        name: 'Marcos',
+      },
     }
   },
 })
@@ -23,8 +24,5 @@ export default defineComponent({
 .button_styled {
   position: absolute;
   top: 45%;
-}
-:v-deep.button_styled span {
-  color: red;
 }
 </style>
