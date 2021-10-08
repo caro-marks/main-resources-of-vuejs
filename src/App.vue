@@ -5,6 +5,7 @@
       <li @click="currentView = 'Sobre'">Sobre</li>
       <li @click="currentView = 'Contato'">Contato</li>
     </ul>
+
     <styled-button text="Cadastro" color="success" @clique="action($event)">
       <template v-slot:before>
         <i class="fas fa-hand-spock"></i>
@@ -13,7 +14,12 @@
         <i class="far fa-hand-spock"></i>
       </template>
     </styled-button>
-    <component :is="currentView" />
+
+    <button @click="show = !show">Toogle</button>
+
+    <transition name="fade">
+      <component :is="currentView" v-if="show" />
+    </transition>
   </div>
 </template>
 
@@ -33,6 +39,7 @@ export default defineComponent({
   data() {
     return {
       currentView: 'Home',
+      show: false,
     }
   },
   methods: {
@@ -42,3 +49,25 @@ export default defineComponent({
   },
 })
 </script>
+
+<style scoped>
+/* 
+v-enter-from (de onde estar vindo)
+v-enter-active (como vai acontecer)
+v-enter-to (para onde está indo)
+
+v-leave-from (de onde estar vindo)
+v-leave-active (como vai acontecer)
+v-leave-to (para onde está indo)
+
+O nome inicial `v` depende do atributo `name`
+*/
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+</style>
